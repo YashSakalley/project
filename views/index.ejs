@@ -8,35 +8,71 @@
     body{
       margin: 0px;
       padding: 0px;
-      background: url("/images/back.jpg");
+      background: url("/images/test/back12.jpg");
       background-position: center center; 
       background-repeat: no-repeat; 
       background-attachment: fixed; 
       background-size: cover; 
       background-color: #464646; 
     }
-    
+    .p-5 {
+    padding: 1rem!important;
+}
+    .card{
+      margin-top: 10px;
+    }
     </style>
   </head>
   <body>
     <nav class="navbar navbar-dark bg-dark">
       <a class="navbar-brand" href="#">VIRTUAL COP</a>
     </nav>
-    <div class = "container">
-      <div class="row">
-        <div class="col-sm div-h1"><span class="flow-text">this is division</span></div>
-        <div class="col-sm div-h2"><span class="flow-text">
-          <div class="login-box">
-          <h1>Authenticate</h1>
-            <form id="form" method="POST">
-            <p>Aadhaar</p>
-            <input type="text" name="aadhaar" placeholder="Enter aadhar no." required>
-            <p>OTP</p>
-            <input type="text" name="otp" placeholder="Enter otp" required>
-            <input type="submit" value="submit">
-              <br> <br>    
-          </form>
-          </div></span></div>
+    <div class="d-md-flex h-md-100">
+      <div class="col-md-6 p-0 bg-indigo h-md-100">
+        <div class=" d-md-flex align-items-center h-100 p-5 text-center" style="border: 5px solid white">
+          <div>
+            <img src = "images/police.jpg" class="mb-0 mt-3" style="width: 50%;"></img>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 p-0 bg-transparent h-md-100 loginarea">
+        <div class="d-md-flex align-items-center h-md-100 p-5 justify-content-center">
+          <div class="container">
+            <form class = "card" style="padding: 2rem;" method="POST">
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputEmail4">Aadhaar</label>
+                  <input name="aadhaar" type="text" class="form-control" placeholder="Enter Aadhaar no." autocomplete="off">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputPassword4">NEXT</label><br>
+                  <button type="submit" class = "btn btn-primary">GENERATE OTP</button>  
+                </div>
+              </div>
+            </form>
+            <form class = "card" style="padding: 2rem;" method="POST" action="/verify">
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputEmail4">Aadhaar</label>
+                  <input name="aadhaar" type="text" class="form-control" value="<%=aadhaar %>" autocomplete="off">
+                  <br>
+                  <label for="inputEmail4">OTP</label>
+                  <input name="code" type="text" class="form-control" placeholder="Enter OTP" autocomplete="off">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputEmail4">Message</label>
+                  <textarea class="form-control" rows="5" id="comment" disabled ><%=msg %></textarea>
+                </div>
+              
+                <div class="form-group col-md-6">
+                  <label for="inputPassword4">SUBMIT</label><br>
+                  <button type="submit" class = "btn btn-primary">SUBMIT</button>  
+                </div>
+              </div>
+              </div>
+            </form>
+          </div>       
+        </div>
       </div>
     </div>
   </body>

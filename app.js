@@ -5,12 +5,32 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const session = require('express-session');
 var app = express();
 
+//for database (MongoDB)
+var mongoose = require('mongoose');
+mongoose.connect("mongodb://localhost/data", {useNewUrlParser : true, useUnifiedTopology : true})
+.then((data) => {
+  console.log("DB connected successfully");
+})
+.catch((err) => {
+  console.log("error occured in database : ", err);
+})
+
+//session
+app.use(session({
+  secret: 'secret key',
+  saveUninitialized: false,
+  resave: false
+}))
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+//flash messages
+app.use(require('connect-flash')());
+//middlewares
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -19,6 +39,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
+
+//handling self created aadhar api
+var aadhaarAPI = require("./routes/aadhaarAPI");
+app.use('/aadhaarAPI', aadhaarAPI);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
