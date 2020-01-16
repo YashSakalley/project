@@ -6,7 +6,8 @@ var aadhaar = require("../model/aadhaar");
 router.get('/', function(req, res, next) {
   var number = req.flash('num');
   var msg = req.flash('msg');
-  res.render('index', {"aadhaar" : number, "msg" : msg});
+  var valid = req.flash('valid');
+  res.render('index', {"aadhaar" : number, "msg" : msg, "valid": valid});
 });
 
 //OTP Logic
@@ -27,12 +28,14 @@ router.post('/', (req, res) => {
     })
     .then((data) => {
       req.flash('num', global_data.aadhaar_number);
+      req.flash('valid', '1')
       var phoneStr = global_data.phone.toString()
       req.flash('msg', `OTP has been sent to your registered number i.e XXXXXXX${phoneStr[9]+phoneStr[10]+phoneStr[11]}`);
       return res.redirect('/');    
     })
     .catch((err) => {
         console.log("error occured during OTP logic ", err);
+        res.send("MAX verification attempts reach : try again later");
     });
   })
   .catch((err) => {
@@ -57,16 +60,19 @@ router.post('/verify', (req, res) => {
     .then((data) => {
         if(data.valid == true)
         {
+          req.flash('valid', '1');
           res.status(200).send(data);
         }
         else
         {
+          req.flash('valid', '0')
           req.flash('msg', 'OTP is wrong');
           res.redirect('/');
         }
     })
     .catch((err) => {
         console.log("error occured during verifying OTP ", err);
+        req.flash('valid', '0');
         req.flash('msg','OTP verification is expired generate it again');
         res.redirect('/');
     });

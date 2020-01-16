@@ -8,7 +8,7 @@
     body{
       margin: 0px;
       padding: 0px;
-      background: url("/images/test/back12.jpg");
+      background: url("/images/test/back16.jpg");
       background-position: center center; 
       background-repeat: no-repeat; 
       background-attachment: fixed; 
@@ -41,7 +41,7 @@
             <form class = "card" style="padding: 2rem;" method="POST">
               <div class="form-row">
                 <div class="form-group col-md-6">
-                  <label for="inputEmail4">Aadhaar</label>
+                  <label for="inputEmail4">AADHAAR</label>
                   <input name="aadhaar" type="text" class="form-control" placeholder="Enter Aadhaar no." autocomplete="off">
                 </div>
                 <div class="form-group col-md-6">
@@ -53,15 +53,20 @@
             <form class = "card" style="padding: 2rem;" method="POST" action="/verify">
               <div class="form-row">
                 <div class="form-group col-md-6">
-                  <label for="inputEmail4">Aadhaar</label>
+                  <label for="inputEmail4">AADHAAR</label>
                   <input name="aadhaar" type="text" class="form-control" value="<%=aadhaar %>" autocomplete="off">
                   <br>
                   <label for="inputEmail4">OTP</label>
                   <input name="code" type="text" class="form-control" placeholder="Enter OTP" autocomplete="off">
                 </div>
-                <div class="form-group col-md-6">
-                  <label for="inputEmail4">Message</label>
-                  <textarea class="form-control" rows="5" id="comment" disabled ><%=msg %></textarea>
+                <div class="col-md-6 form-group" style ="border: 2px solid grey; padding: 10px;">
+                  <label for="inputEmail4">RESPONSE</label>
+                    <% if (valid == 1) { %>
+                      <div style="color: green; padding: 0px; border: 2px solid black;"><%=msg %></div>
+                      <%} else { %>
+                      <div style="color: red;"><%=msg %></div>
+                      <% } %>
+                    
                 </div>
               
                 <div class="form-group col-md-6">
