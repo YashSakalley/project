@@ -3,8 +3,12 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+
+//routers variable
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var fir = require('./routes/fir');
+
 const session = require('express-session');
 var app = express();
 
@@ -37,8 +41,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//router middlewares
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/', fir);
 
 
 //handling self created aadhar api

@@ -2,7 +2,8 @@ var express = require('express');
 var router = express.Router();
 var config = require("../config");
 var aadhaar = require("../model/aadhaar");
-/* GET home page. */
+
+//front page
 router.get('/', function(req, res, next) {
   var number = req.flash('num');
   var msg = req.flash('msg');
@@ -39,11 +40,15 @@ router.post('/', (req, res) => {
     });
   })
   .catch((err) => {
+    req.flash('msg', 'Wrong Aadhar number')
+    req.flash('valid', '0');
     console.log(err);
+    res.redirect('/');
   })
   
 });
 
+//OTP verifying logic 
 router.post('/verify', (req, res) => {
   console.log(req.body);
   aadhaar.findOne({aadhaar_number : req.body.aadhaar})
@@ -61,11 +66,13 @@ router.post('/verify', (req, res) => {
         if(data.valid == true)
         {
           req.flash('valid', '1');
-          res.status(200).send(data);
+          req.flash('auth', 'yes');
+          res.redirect('/fir');
         }
         else
         {
           req.flash('valid', '0')
+          req.flash('auth', 'no');
           req.flash('msg', 'OTP is wrong');
           res.redirect('/');
         }
@@ -73,14 +80,19 @@ router.post('/verify', (req, res) => {
     .catch((err) => {
         console.log("error occured during verifying OTP ", err);
         req.flash('valid', '0');
+        req.flash('auth', 'no');
         req.flash('msg','OTP verification is expired generate it again');
         res.redirect('/');
     });
   })
   .catch((err) => {
     console.log("error occured as : ", err);
+    req.flash('msg', 'Wrong Aadhar number')
+    req.flash('auth', 'no');
+    req.flash('valid', '0');
+    res.redirect('/');
   });  
-  
 });
+
 
 module.exports = router;
