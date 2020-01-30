@@ -1,28 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>FIR</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <style type = "text/css">
-    body{
-        margin: 0px;
-        padding: 0px;
-        background: url("/images/test/back12.jpg");
-        background-position: center center; 
-        background-repeat: no-repeat; 
-        background-attachment: fixed; 
-        background-size: cover; 
-        background-color: #464646; 
-      }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>FIR</title>
+  <link rel="stylesheet" href="stylesheets/style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <style type="text/css">
+    body {
+      margin: 0px;
+      padding: 0px;
+      /*background: url("/images/test/back12.jpg");*/
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+      background-color: #464646;
+      color: white;
+    }
+  </style>
 </head>
+
 <body>
-    <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">VIRTUAL POLICE STATION</a>
-        <a href="/logout" class="btn btn-outline-success my-2 my-sm-0">LOGOUT</a>
-      </nav>
+  <nav class="navbar navbar-dark bg-dark" style="position: sticky; top: 0; z-index: 99;">
+    <a class="navbar-brand" href="#">VIRTUAL POLICE STATION</a>
+    <a href="/logout" class="btn btn-outline-success my-2 my-sm-0">LOGOUT</a>
+  </nav>
+  <h1 style="text-align: center; color: orangered; position: sticky;">FIRST INFORMATION REPORT (F.I.R)</h1>
+  <header class="header">
+    <strong>Name: </strong><%= name %>
+    <span style="float: right;"><strong> Aadhaar Number: </strong><%= a_num %> </span>
+    <strong><br>Current Date: </strong><%= date %></header>
+  <div class="content">
+    <div class="anim">Animated Police Officer.
+      <img src="https://i.pinimg.com/736x/0a/13/2d/0a132d3fd35ef46b6ee78afcd9633739.jpg" alt="Image not loaded">
+    </div>
+    <main class="main">Main content goes here.
+      <br>
+      <div class="main__chat-window">
+        <form action="" class="main__chat-form">
+          <input type="text" placeholder="Enter your reply" class="chat-text">
+          <input type="submit" value="Enter">
+        </form>
+      </div>
+
+    </main>
+  </div>
+
 </body>
+
 </html>
