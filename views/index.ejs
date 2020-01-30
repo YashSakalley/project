@@ -1,84 +1,92 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>SIH</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link type = "text/css" rel="stylesheet" href = "/stylesheets/style.css">
-    <style type = "text/css">
-    body{
+
+<head>
+  <title>SIH</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="/stylesheets/style.css">
+  <style type="text/css">
+    body {
       margin: 0px;
       padding: 0px;
       background: url("/images/test/back12.jpg");
-      background-position: center center; 
-      background-repeat: no-repeat; 
-      background-attachment: fixed; 
-      background-size: cover; 
-      background-color: #464646; 
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+      background-color: #464646;
     }
+
     .p-5 {
-    padding: 1rem!important;
-}
-    .card{
+      padding: 1rem !important;
+    }
+
+    .card {
       margin-top: 10px;
     }
-    </style>
-  </head>
-  <body>
-    <nav class="navbar navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">VIRTUAL POLICE STATION</a>
-    </nav>
-    <div class="d-md-flex h-md-100">
-      <div class="col-md-6 p-0 bg-indigo h-md-100">
-        <div class=" d-md-flex align-items-center h-100 p-5 text-center" style="border: 5px solid white">
-          <div>
-            <img src = "" class="mb-0 mt-3" style="width: 50%;"></img>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 p-0 bg-transparent h-md-100 loginarea">
-        <div class="d-md-flex align-items-center h-md-100 p-5 justify-content-center">
-          <div class="container">
-            <form class = "card" style="padding: 2rem;" method="POST">
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="inputEmail4">AADHAAR</label>
-                  <input name="aadhaar" type="text" class="form-control" placeholder="Enter Aadhaar no." autocomplete="off">
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="inputPassword4">NEXT</label><br>
-                  <button type="submit" class = "btn btn-primary">GENERATE OTP</button>  
-                </div>
-              </div>
-            </form>
-            <form class = "card" style="padding: 2rem;" method="POST" action="/verify">
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="inputEmail4">AADHAAR</label>
-                  <input name="aadhaar" type="text" class="form-control" value="<%=aadhaar %>" autocomplete="off">
-                  <br>
-                  <label for="inputEmail4">OTP</label>
-                  <input name="code" type="text" class="form-control" placeholder="Enter OTP" autocomplete="off">
-                </div>
-                <div class="col-md-6 form-group" style ="border: 2px solid grey; padding: 10px;">
-                  <label for="inputEmail4">RESPONSE</label>
-                    <% if (valid == 1) { %>
-                      <div style="color: green; padding: 0px;"><%=msg %></div>
-                      <%} else { %>
-                      <div style="color: red;"><%=msg %></div>
-                      <% } %>
+  </style>
+</head>
 
-                </div>
-              
-                <div class="form-group col-md-6">
-                  <label for="inputPassword4">SUBMIT</label><br>
-                  <button type="submit" class = "btn btn-primary">SUBMIT</button>  
-                </div>
-              </div>
-              </div>
-            </form>
-          </div>       
+<body>
+  <nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">VIRTUAL POLICE STATION</a>
+  </nav>
+  <div class="d-md-flex h-md-100">
+    <div class="col-md-6 p-0 bg-indigo h-md-100">
+      <div class=" d-md-flex align-items-center h-100 p-5 text-center" style="border: 5px solid white">
+        <div>
+          <img src="" class="mb-0 mt-3" style="width: 50%;"></img>
         </div>
       </div>
     </div>
-  </body>
+    <div class="col-md-6 p-0 bg-transparent h-md-100 loginarea">
+      <div class="d-md-flex align-items-center h-md-100 p-5 justify-content-center">
+        <div class="container">
+          <form class="card" style="padding: 2rem;" method="POST">
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputEmail4">AADHAAR</label>
+                <input name="aadhaar" type="text" class="form-control" placeholder="Enter Aadhaar no."
+                  autocomplete="off">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputPassword4">NEXT</label><br>
+                <button type="submit" class="btn btn-primary">GENERATE OTP</button>
+              </div>
+            </div>
+          </form>
+          <form class="card" style="padding: 2rem;" method="POST" action="/verify">
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputEmail4">AADHAAR</label>
+                <input name="aadhaar" type="text" class="form-control" value="<%=aadhaar %>" autocomplete="off"
+                  readonly="readonly">
+                <br>
+                <label for="inputEmail4">OTP</label>
+                <input name="code" type="text" class="form-control" placeholder="Enter OTP" autocomplete="off">
+              </div>
+              <div class="col-md-6 form-group" style="border: 2px solid grey; padding: 10px;">
+                <label for="inputEmail4">RESPONSE</label>
+                <% if (valid == 1) { %>
+                <div style="color: green; padding: 0px;"><%=msg %></div>
+                <%} else { %>
+                <div style="color: red;"><%=msg %></div>
+                <% } %>
+
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="inputPassword4">SUBMIT</label><br>
+                <button type="submit" class="btn btn-primary">SUBMIT</button>
+              </div>
+            </div>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>
+</body>
+
 </html>
